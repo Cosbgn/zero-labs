@@ -1,7 +1,7 @@
 [build]
 	publish = "dist"
 	environment = {NODE_ENV = "production", API_URL = "https://zero-labs.netlify.app"}
-	command = "npm run generate && npm run functions:build"
+	command = "npm run generate"
     functions = "./api"
 
 [[redirects]]
