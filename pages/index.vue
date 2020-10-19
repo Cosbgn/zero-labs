@@ -6,8 +6,8 @@
 </template>
 <script>
 export default {
-	created(){
-		window.location.href = "https://zero.sh/labs"
+	mounted(){
+		this.$router.push("https://zero.sh/labs")
 	}
 }
 </script>

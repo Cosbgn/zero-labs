@@ -5,9 +5,7 @@ exports.handler = async ( event , context ) => {
 		return { statusCode: 405, body: "Method Not Allowed" };
 	}
 	let {url, id, sheet, format} = queryStringParameters
-
-	url = "https://docs.google.com/spreadsheets/d/1bOPAjbHPXgltBIzATy1pmqcBezT_Fxduma1UZLWJids/edit#gid=0"
-	// const id = "1LCH2dw0MMFZSdpXKJz6v5B82AV11vFPxCvFranw7gdo"
+	
 	if (!id){
 		try {
 			id = url.replace("https://docs.google.com/spreadsheets/d/", '').split('/')[0]
