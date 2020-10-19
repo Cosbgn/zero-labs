@@ -4,3 +4,10 @@
 	  <p class='text-gray-600'>Open Source Projects from Zero.sh</p>
   </div>
 </template>
+<script>
+export default {
+	created(){
+		window.location.href = "https://zero.sh/labs"
+	}
+}
+</script>
