@@ -1,0 +1,22 @@
+{
+  "name": "zero-labs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+	"dev":"netlify dev",
+    "nuxt-dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxt/content": "^1.9.0",
+    "@nuxtjs/axios": "^5.12.2",
+    "core-js": "^3.6.5",
+    "nuxt": "^2.14.6"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^3.1.0",
+    "netlify": "^4.8.0"
+  }
+}
