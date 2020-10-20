@@ -5,5 +5,5 @@ exports.handler = async ( event , context ) => {
 	}
 	const embed = queryStringParameters.embed
 	const decoded = embed ? decodeURIComponent(Buffer.from(embed, 'base64').toString('binary')) : "<p style='padding:30px; font-size:2rem; font-weight:bold'>'embed' parameter missing in the url query</p>"
-	return decoded //reply.type('text/html').send(decoded)
+	return {statusCode:200, body:decoded} //reply.type('text/html').send(decoded)
 } 
