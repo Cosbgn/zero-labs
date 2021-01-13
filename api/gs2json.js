@@ -5,7 +5,6 @@ exports.handler = async ( event , context ) => {
 		return { statusCode: 405, body: "Method Not Allowed" };
 	}
 	let {url, id, sheet, format} = queryStringParameters
-	
 	if (!id){
 		try {
 			id = url.replace("https://docs.google.com/spreadsheets/d/", '').split('/')[0]
@@ -31,7 +30,7 @@ exports.handler = async ( event , context ) => {
 	catch(e){
 		return { statusCode: 400 , body: JSON.stringify({error:"Your Spreadsheet doesn't seem to be public!"}) }
 	}
-
+	console.log(format, typeof format)
 	if (!format || format==1) {
 		return { statusCode: 200 , body: JSON.stringify(columns) }
 	}
