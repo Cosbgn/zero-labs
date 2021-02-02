@@ -7,7 +7,6 @@ const pg = require("pg")
 const tedious = require("tedious")
 
 exports.handler = async ( event , context ) => {
-	console.log("HELLOO")
 	const {body, httpMethod} = event
 	if (httpMethod !== "POST") {
 		return { statusCode: 405, body: "Method Not Allowed - Please send a POST request instead" };
