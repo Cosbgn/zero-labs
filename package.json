@@ -12,14 +12,14 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.0",
     "@nuxtjs/tailwindcss": "^3.4.2",
-    "nuxt": "^2.14.12"
+    "nuxt": "^2.14.12",
+    "sequelize": "^6.5.0"
   },
   "devDependencies": {
+    "mariadb": "^2.5.2",
+    "mysql2": "^2.2.5",
     "netlify-cli": "^3.4.6",
     "pg": "^8.5.1",
-    "sequelize": "^6.5.0",
-    "tedious": "^11.0.3",
-    "mariadb": "^2.5.2",
-    "mysql2": "^2.2.5"
+    "tedious": "^11.0.3"
   }
 }
