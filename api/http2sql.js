@@ -6,24 +6,22 @@ const mariadb = require("mariadb")
 const pg = require("pg")
 const tedious = require("tedious")
 
-
 exports.handler = async ( event , context ) => {
+	console.log("HELLOO")
 	const {body, httpMethod} = event
 	if (httpMethod !== "POST") {
 		return { statusCode: 405, body: "Method Not Allowed - Please send a POST request instead" };
 	}
-
-	const {uri, config_object, query} = body
-
+	const {uri, config_object, query} = JSON.parse(body)
 	if (!query){
 		return { statusCode: 400, body: "You need to pass a valid SQL query" };
-	}	
+	}
 
-	if (!uri || !config_object){
+	if (!uri && !config_object){
 		return { statusCode: 400, body: "You need to pass either a valid uri or a config_object for sequelize" };
 	}
 	
-	try{
+	try {
 		let seq;
 		if (uri){
 			seq = new Sequelize(uri.toString())
@@ -33,7 +31,7 @@ exports.handler = async ( event , context ) => {
 		const [results, metadata] = await seq.query(query)
 		return { statusCode: 200, body: JSON.stringify(results) };
 	}
-	catch(e){
+	catch(e) {
 		return { statusCode: 400, body: e.message };
 	}
 } 
