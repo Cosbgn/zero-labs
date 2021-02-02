@@ -1,0 +1,39 @@
+const { Sequelize } = require('sequelize');
+
+// Supported Databases 
+const mysql2 = require('mysql2'); 
+const mariadb = require("mariadb")
+const pg = require("pg")
+const tedious = require("tedious")
+
+
+exports.handler = async ( event , context ) => {
+	const {body, httpMethod} = event
+	if (httpMethod !== "GET") {
+		return { statusCode: 405, body: "Method Not Allowed" };
+	}
+
+	const {uri, config_object, query} = body
+
+	if (!query){
+		return { statusCode: 400, body: "You need to pass a valid SQL query" };
+	}	
+
+	if (!uri || !config_object){
+		return { statusCode: 400, body: "You need to pass either a valid uri or a config_object for sequelize" };
+	}
+	
+	try{
+		let seq;
+		if (uri){
+			seq = new Sequelize(uri.toString())
+		} else {
+			seq = new Sequelize(config_object)
+		}
+		const [results, metadata] = await seq.query(query)
+		return { statusCode: 200, body: JSON.stringify(results) };
+	}
+	catch(e){
+		return { statusCode: 400, body: e.message };
+	}
+} 
