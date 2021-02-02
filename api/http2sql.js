@@ -9,8 +9,8 @@ const tedious = require("tedious")
 
 exports.handler = async ( event , context ) => {
 	const {body, httpMethod} = event
-	if (httpMethod !== "GET") {
-		return { statusCode: 405, body: "Method Not Allowed" };
+	if (httpMethod !== "POST") {
+		return { statusCode: 405, body: "Method Not Allowed - Please send a POST request instead" };
 	}
 
 	const {uri, config_object, query} = body
