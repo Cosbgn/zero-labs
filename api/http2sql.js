@@ -17,9 +17,9 @@ exports.handler = async ( event , context ) => {
 		return { statusCode: 400, body: "You need to pass a valid SQL query" };
 	}
 
-	if (!uri && !config_object){
-		return { statusCode: 400, body: "You need to pass either a valid uri or a auth object for sequelize" };
-	}
+	// if (!uri && !config_object){
+	// 	return { statusCode: 400, body: "You need to pass either a valid uri or a auth object for sequelize" };
+	// }
 	
 	try {
 		let seq;
