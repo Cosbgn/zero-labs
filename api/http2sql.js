@@ -11,7 +11,8 @@ exports.handler = async ( event , context ) => {
 	if (httpMethod !== "POST") {
 		return { statusCode: 405, body: "Method Not Allowed - Please send a POST request instead" };
 	}
-	const {uri, auth, config_object, query} = JSON.parse(body)
+	const {uri, auth, params, config_object, query} = JSON.parse(body)
+	const p = params || []
 	if (!query){
 		return { statusCode: 400, body: "You need to pass a valid SQL query" };
 	}
@@ -23,9 +24,9 @@ exports.handler = async ( event , context ) => {
 	try {
 		let seq;
 		if (uri){
-			seq = new Sequelize(uri.toString())
+			seq = new Sequelize(uri.toString(), ...p)
 		} else {
-			seq = new Sequelize(...auth, config_object)
+			seq = new Sequelize(...p)
 		}
 		const [results, metadata] = await seq.query(query)
 		return { statusCode: 200, body: JSON.stringify(results) };
